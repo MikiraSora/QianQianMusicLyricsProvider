@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace QianQianMusicLyricsProvider
 {
     [SourceProviderName("qianqian", "MikiraSora")]
-    public class QianQianMusicSourceProvider:SourceProviderBase<SearchResult, SongSearch, LyricsDownloader,LyricsParser>
+    public class QianQianMusicSourceProvider:SourceProviderBase<SearchResult, SongSearch, LyricsDownloader,DefaultLyricsParser>
     {
 
     }
