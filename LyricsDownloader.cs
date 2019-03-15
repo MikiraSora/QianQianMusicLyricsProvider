@@ -1,4 +1,5 @@
-﻿using LyricsFinder.SourcePrivoder;
+﻿using LyricsFinder;
+using LyricsFinder.SourcePrivoder;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +24,7 @@ namespace QianQianMusicLyricsProvider
             try
             {
                 HttpWebRequest request = HttpWebRequest.CreateHttp(download_link);
+                request.Timeout=Setting.SearchAndDownloadTimeout;
 
                 using (var reader = new StreamReader((request.GetResponse()).GetResponseStream()))
                 {

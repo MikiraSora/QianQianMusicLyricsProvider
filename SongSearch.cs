@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+using LyricsFinder;
 using LyricsFinder.SourcePrivoder;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -25,6 +26,7 @@ namespace QianQianMusicLyricsProvider
             var url = string.Format(SEARCH_API_URL, $"{artist} {title}");
 
             HttpWebRequest request = WebRequest.CreateHttp(url);
+            request.Timeout=Setting.SearchAndDownloadTimeout;
 
             using (var stream=request.GetResponse().GetResponseStream())
             {
@@ -64,6 +66,7 @@ namespace QianQianMusicLyricsProvider
 
             var id = result["id"].ToString();
             HttpWebRequest request = WebRequest.CreateHttp(string.Format(SONG_INFO_API_URL, id));
+            request.Timeout=Setting.SearchAndDownloadTimeout;
 
             var response= await request.GetResponseAsync();
 
